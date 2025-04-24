@@ -241,12 +241,13 @@ The values of the following properties are zero-indexed arrays by edge ID.
   For nonmanifolds in particular, the (nonnull) faces should be listed in
   counterclockwise order around the edge,
   relative to the orientation of the edge.
-  For manifolds, the array for each edge should be an array of length 2,
+  For orientable manifolds, the array for each edge should be an array of length 2,
   where the first entry is the face locally to the "left" of
   the edge (or `null` if there is no such face) and the second entry is the
   face locally to the "right" of the edge (or `null` if there is no such face);
-  for orientable manifolds, "left" and "right" must be consistent with the
-  manifold orientation given by the counterclockwise orientation of faces.
+  a face is "left" of an edge if the edge's orientation
+  (determined by `edges_vertices`) matches the face's orientation
+  (determined by `faces_vertices`), and "right" otherwise.
   However, a boundary edge may also be represented by a length-1 array, with
   the `null` omitted, to be consistent with the nonmanifold representation.
 * `edges_assignment`: For each edge, a string representing its fold
